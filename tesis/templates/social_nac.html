@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="static/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="static/js/highcharts.js"></script>
+<script type="text/javascript" src="static/js/modules/exporting.js"></script>
+
+<script>
+$( document ).ready(function() {
+
+function obtvalor(){
+$("#container").hide();
+$("#tabla").hide();
+
+var valor = $("select.control option:selected").val();
+if(valor=="0"){
+	$("#tabla").show();
+}
+else if(valor=="1"){
+	$("#container").show();
+}
+}
+
+$("select").change(obtvalor);
+obtvalor();
+
+});
+
+$(function(){
+    $('#container').highcharts({
+        title: {
+            text: 'Gráfica',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'Fuente: INE',
+            x: -20
+        },
+        xAxis: {
+            categories: ['2010', '2011', '2012', '2013', '2014']
+        },
+        yAxis: {
+            title: {
+                text: 'Población'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+        },
+        tooltip: {
+            valueSuffix: 'hab'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'La Araucanía',
+            data: [7.0, 6.9, 9.5, 14.5, 18.2]
+        }, {
+            name: 'Los Ríos',
+            data: ['0.1', 0.8, 5.7, 11.3, 17.0]
+        }, {
+            name: 'Los Lagos',
+            data: [-0.9, 0.6, 3.5, 8.4, 13.5]
+        }]
+});
+
+});
+</script>
+
+<table id="tabla">
+<caption>Ejemplo categoría Social, variable demográfica</caption>
+<tr>
+<th></th>
+{% for lr in cons %}
+<th>{{lr.fecha}}</th>
+{%endfor%}
+</tr>
+<tr>
+<th>La Araucanía</th>
+{% for la in cons2 %}
+<td>{{la.valor}}</td>
+{%endfor%}
+</tr>
+<tr>
+<th>Los Ríos</th>
+{% for lr in cons %}
+<td>{{lr.valor}}</td>
+{%endfor%}
+</tr>
+<tr>
+<th>Los Lagos</th>
+{% for ll in cons3 %}
+<td>{{ll.valor}}</td>
+{%endfor%}
+</tr>
+
+<div id="container" style="min-width: 750px; height: 400px; margin: 0 auto"></div>
+<div class="social">
+<select name="seleccion" size="2" class="control">
+   <option value="0" selected="selected">Ver Datos</option>
+   <option value="1">Ver Gráfico</option>
+</select>
+
+<p>Fuente INE. Datos estimativos de población 2010-2014.</p>
+<p>Para ver todas las variables de esta categoría <a href="{{url_for('var_socn')}}">haga click aquí</a></p>
+</div>
+
+{% endblock content %}

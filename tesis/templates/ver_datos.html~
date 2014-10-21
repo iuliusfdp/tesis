@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="static/jquery-2.0.3.min.js"></script>
+
+<script>
+$( document ).ready(function() {
+
+
+function obtvalor(){
+	$("#tablaimacec").hide();
+	$("#tablapib").hide();
+	$("#tablaipi").hide();
+	$("#ima").hide();
+	$("#pb").hide();
+	$("#ip").hide();
+
+	var valor = $("select.form-control option:selected").val();
+	if(valor=="imacec"){
+		$("#tablaimacec").show();
+		$("#ima").show();
+	}
+	else if(valor=="pib"){
+		$("#tablapib").show();
+		$("#pb").show();
+	}
+	else if(valor=="ipi"){
+		$("#tablaipi").show();
+		$("#ip").show();
+	}
+	}
+
+	$("select").change(obtvalor);
+	obtvalor();
+
+});
+</script>
+
+<table width="100%" height="250px" cellspacing="1px" border="0px">
+   <tr height="50px">
+      <td colspan="3px">
+         <table title="Banner" border="0">
+            <tr>
+               <td>Ejemplos de datos</td>
+            </tr>
+         </table>
+      </td>
+   </tr>
+   <tr height="200px">
+      <td>
+	<select id="ind" class="form-control">
+	<option value="--">Seleccione un índice</option>
+
+	<option value="imacec" >IMACEC</option>
+	<option value="pib" >PIB</option>
+	<option value="ipi" >IPI</option>
+
+	</select>
+      </td>
+      <td>
+	<table id="tablaimacec" class="table table-hover" width="400px">
+		<tr>
+			<th>2014</th>
+			<th>Abril</th>
+			<th>Mayo</th>
+			<th>Junio</th>
+			<th>Julio</th>
+		</tr>
+		<tr>
+			<th>IMACEC</th>
+			<td>{{ entrada1 }}</td>
+			<td>{{ entrada2 }}</td>
+			<td>{{ entrada3 }}</td>
+			<td>{{ entrada4 }}</td>
+		</tr>
+
+	</table>
+
+	<table id="tablapib" class="table table-hover" width="400px">
+		<tr>
+			<th></th>
+			<th>2013 III</th>
+			<th>2013 IV</th>
+			<th>2014 I</th>
+			<th>2014 II</th>
+		</tr>
+		<tr>
+			<th>PIB real trimestral</th>
+			<td>{{ entrada5 }}</td>
+			<td>{{ entrada6 }}</td>
+			<td>{{ entrada7 }}</td>
+			<td>{{ entrada8 }}</td>
+		</tr>
+	</table>
+
+	<table id="tablaipi" class="table table-hover" width="400px">
+			<th>2014</th>
+			<th>Marzo</th>
+			<th>Abril</th>
+			<th>Mayo</th>
+			<th>Junio</th>
+		</tr>
+		<tr>
+			<th>Indice de Producción Industrial INE</th>
+			<td>{{ entrada9 }}</td>
+			<td>{{ entrada10 }}</td>
+			<td>{{ entrada11 }}</td>
+			<td>{{ entrada12 }}</td>
+		</tr>
+	</table>
+      </td>
+      <td>
+         <table title="Info" border="0" width="400px">
+            <tr>
+                <td><p id="ima">Cifras preliminares correspondientes al nuevo Indicador Mensual de Actividad Económica (Imacec), estructurado a base de la Compilación de Referencia 2008. La cobertura de este indicador comprende casi la totalidad de las actividades económicas incluidas en el PIB.</p>
+		<p id="pb">Información2</p>
+		<p id="ip">Información3</p></td>
+            </tr>
+         </table>
+     </td>
+  </tr>
+</table>
+
+{% endblock content %}

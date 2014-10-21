@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+
+<ul id="var" class="elemento">
+
+<li><a href="{{url_for('demo_nac')}}">Demografía</a></li>
+
+<li><a href="{{url_for('pobr_nac')}}">Pobreza</a></li>
+
+<li><a href="{{url_for('accs_nac')}}">Acceso Servicios</a></li>
+
+</ul>
+
+<body>
+<p>Seleccione una variable</p>
+</body>
+
+{% endblock content %}

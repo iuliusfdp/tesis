@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="static/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="static/js/highcharts.js"></script>
+<script type="text/javascript" src="static/js/modules/exporting.js"></script>
+
+
+<ul id="var" class="elemento">
+
+<li><a href="{{url_for('demo_nac')}}">Demografía</a></li>
+
+<li><a href="{{url_for('pobr_nac')}}">Pobreza</a></li>
+
+<li><a href="{{url_for('accs_nac')}}">Acceso Servicios</a></li>
+
+</ul>
+
+<table id="tabla">
+<caption>Demografía Nacional</caption>
+<tr>
+<th></th>
+{% for lr in cons %}
+{%if 'Los Rios' in lr.unidad%}
+<th>{{lr.fecha}}</th>
+{%endif%}
+{%endfor%}
+</tr>
+<tr>
+<th>Arica y Parinacota</th>
+{% for lr in cons %}
+{%if 'Arica y Parinacota' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Tarapaca</th>
+{% for lr in cons %}
+{%if 'Tarapaca' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Antofagasta</th>
+{% for lr in cons %}
+{%if 'Antofagasta' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Coquimbo</th>
+{% for lr in cons %}
+{%if 'Coquimbo' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Valparaíso</th>
+{% for lr in cons %}
+{%if 'Valparaiso' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Región Metropolitana</th>
+{% for lr in cons %}
+{%if 'Region Metropolitana' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>La Araucanía</th>
+{% for lr in cons %}
+{%if 'La Araucania' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>O'Higgins</th>
+{% for lr in cons %}
+{%if "O'Higgins" in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Maule</th>
+{% for lr in cons %}
+{%if 'Maule' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Biobío</th>
+{% for lr in cons %}
+{%if 'Biobio' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>La Araucanía</th>
+{% for lr in cons %}
+{%if 'La Araucania' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Los Ríos</th>
+{% for lr in cons %}
+{%if 'Los Rios' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Los Lagos</th>
+{% for lr in cons %}
+{%if 'Los Lagos' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Aysén</th>
+{% for lr in cons %}
+{%if 'Aysen' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+<tr>
+<th>Magallanes</th>
+{% for lr in cons %}
+{%if 'Magallanes' in lr.unidad%}
+<td>{{lr.valor}}</td>
+{% endif %}
+{%endfor%}
+</tr>
+
+{% endblock content %}

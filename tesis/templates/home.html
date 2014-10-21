@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<script type="text/javascript" src="static/jquery-2.0.3.min.js"></script>
+<script>
+$( document ).ready(function() {
+
+function obtvalor(){
+$("#var").hide();
+$("#var2").hide();
+var valor = $("select.micontrol option:selected").val();
+if(valor=="Nacional"){
+	$("#var").show();
+}
+else if(valor=="Internacional"){
+	$("#var2").show();
+}
+}
+
+$("select").change(obtvalor);
+obtvalor();
+
+});
+</script>
+
+<body>
+
+<h2>Bienvenido a la aplicación<h2>
+<h3>Página inicial de la aplicación<h3>
+
+
+<ul id="var" class="elemento">
+{% for cate in cat %}
+{%if 'Sociales' in cate.nombre%}
+<li><a href="{{url_for('soc_nac')}}">{{ cate.nombre }}</a></li>
+{%endif%}
+{%if 'Economicas' in cate.nombre%}
+<li><a href="{{url_for('eco_nac')}}">{{ cate.nombre }}</a></li>
+{%endif%}
+{%if 'Productivas' in cate.nombre%}
+<li><a href="{{url_for('pro_nac')}}">{{ cate.nombre }}</a></li>
+{%endif%}
+{%if 'Sectoriales' in cate.nombre%}
+<li><a href="{{url_for('sec_nac')}}">{{ cate.nombre }}</a></li>
+{%endif%}
+{% endfor %}
+</ul>
+
+<ul id="var2" class="elemento">
+{% for cate2 in cat2 %}
+{%if 'Sociales' in cate2.nombre%}
+<li><a href="{{url_for('soc_int')}}">{{ cate2.nombre }}</a></li>
+{%endif%}
+{%if 'Economicas' in cate2.nombre%}
+<li><a href="{{url_for('eco_int')}}">{{ cate2.nombre }}</a></li>
+{%endif%}
+{%if 'Productivas' in cate2.nombre%}
+<li><a href="{{url_for('pro_int')}}">{{ cate2.nombre }}</a></li>
+{%endif%}
+{%if 'Sectoriales' in cate2.nombre%}
+<li><a href="{{url_for('sec_int')}}">{{ cate2.nombre }}</a></li>
+{%endif%}
+{% endfor %}
+</ul>
+</body>
+
+{% endblock %}
